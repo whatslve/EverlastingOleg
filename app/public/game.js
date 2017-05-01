@@ -1,20 +1,25 @@
 
-var language, links, updatestate, contentEl, navEl;
+var language, links, contentEl, navEl, state, day, stage;
 language = 'ru';
 contentEl = document.querySelector('.dialog');
 navEl = document.querySelector('.meny');
 links = {
   startGame: "Йоу"
 };
-updatestate = function(state){
-if(!state) return;
- contentEl.innerHTML = links[state.page];
+state = "meny";
+var updatestate = function(state){
+
 };
-navEl.addEventListener('click', function(e){
-  var state;
-  if (e.target.tagName !=='A') return;
-  state = {page: e.target.getAttribute('href')};
-  history.pushState(state,'',state.page);
-  updatestate(state);
-  e.preventDefault();
+
+var saveGame = function(){
+  setCookie("state", state, null);
+};
+
+var startGame = function(){
+navEl.setAttribute("class", "meny hidden");
+contentEl.setAttribute("class", "dialog show");
+
+};
+navEl.addEventListener('click', function(){
+  startGame();
 });

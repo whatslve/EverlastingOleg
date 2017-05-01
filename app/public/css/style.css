@@ -29,7 +29,7 @@ body{
   margin-top:50px;
 }
 
-.meny ul li a{
+.meny ul li span{
   display:block;
   color:#000;
   padding:10px;
@@ -37,17 +37,28 @@ body{
   text-decoration: none;
   transition: 0.2s ease-out 0.2s;
 }
-.meny ul li a:hover{
+.meny ul li span:hover{
   background: #00CC99 ;
   color:#fff;
+  cursor: pointer;
 }
-
+.hui{
+  margin-top:70%;
+}
 .dialog{
-  padding:15px;
   margin:0 auto;
+  padding:15px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
   width:70%;
   height:30%;
+}
+
+.hidden{
+  display:none;
+}
+
+.show{
+  display:block;
 }
