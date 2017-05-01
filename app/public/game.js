@@ -18,14 +18,14 @@ var saveGame = function(){
 var startGame = function(){
 navEl.setAttribute("class", "meny hidden");
 contentEl.setAttribute("class", "dialog show");
-
+alert("игра типо началось но еще нихуя нету");
 };//начало игры
 var startSettings = function() {
-
+alert("настройки ябать");
 };
 
 var startAuthors = function(){
-
+alert("авторы - whatslve & zurg3");
 };
 
 play.addEventListener('click', function(){
