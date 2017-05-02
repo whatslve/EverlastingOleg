@@ -9,6 +9,7 @@ h1 {
 }
 body{
   background: #00CC99;
+
 }
 .meny{
   position:absolute;
@@ -22,6 +23,7 @@ body{
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
   text-align: center;
   padding-top:15px;
+
 }
 .meny ul{
   width:350px;
@@ -56,9 +58,37 @@ body{
 }
 
 .hidden{
-  display:none;
+  display: none;
 }
 
 .show{
-  display:block;
+  display:show;
+}
+@keyframes gui {
+0% {opacity: 0; margin-top: 0;}
+100% {opacity:1;margin-top: 10px;}
+}
+
+.dialog-text{
+  margin-top:10px;
+  animation: gui 1s ease-out ;
+}
+.next{
+  float:right;
+}
+.back{
+  float:left;
+}
+
+.title span{
+  color:#000;
+  transition: 0.2s ease-out 0.2s;
+  font-size: 25px;
+  padding:10px;
+}
+
+.title span:hover{
+  color:#fff;
+  background:#00CC99;
+  cursor: pointer;
 }
