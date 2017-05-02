@@ -1,0 +1,94 @@
+*{
+  margin:0;
+  padding:0;
+  list-style:none;
+  font-family: verdana;
+}
+h1 {
+  color:#00CC99;
+}
+body{
+  background: #00CC99;
+
+}
+.meny{
+  position:absolute;
+  left:50%;
+  top:35%;
+  margin:-100px 0 0 -150px;
+  width:350px;
+  height:300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  text-align: center;
+  padding-top:15px;
+
+}
+.meny ul{
+  width:350px;
+  margin:0 auto;
+  margin-top:50px;
+}
+
+.meny ul li span{
+  display:block;
+  color:#000;
+  padding:10px;
+  font-size: 25px;
+  text-decoration: none;
+  transition: 0.2s ease-out 0.2s;
+}
+.meny ul li span:hover{
+  background: #00CC99 ;
+  color:#fff;
+  cursor: pointer;
+}
+.hui{
+  margin-top:70%;
+}
+.dialog{
+  margin:0 auto;
+  padding:15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  width:70%;
+  height:30%;
+}
+
+.hidden{
+  display: none;
+}
+
+.show{
+  display:show;
+}
+@keyframes gui {
+0% {opacity: 0; margin-top: 0;}
+100% {opacity:1;margin-top: 10px;}
+}
+
+.dialog-text{
+  margin-top:10px;
+  animation: gui 1s ease-out ;
+}
+.next{
+  float:right;
+}
+.back{
+  float:left;
+}
+
+.title span{
+  color:#000;
+  transition: 0.2s ease-out 0.2s;
+  font-size: 25px;
+  padding:10px;
+}
+
+.title span:hover{
+  color:#fff;
+  background:#00CC99;
+  cursor: pointer;
+}
