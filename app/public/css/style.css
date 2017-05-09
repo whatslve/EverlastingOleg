@@ -76,11 +76,25 @@ body{
 }
 .next{
   float:right;
+  transition: 0.2s ease-out 0.2s;
 }
 .back{
   float:left;
+  transition: 0.2s ease-out 0.2s;
 }
-
+.back:hover{
+  background: #00CC99 ;
+  color:#fff;
+  cursor: pointer;
+}
+.next:hover{
+  background: #00CC99 ;
+  color:#fff;
+  cursor: pointer;
+}
+.arrow{
+  padding:10px 5px 10px 5px;
+}
 .title span{
   color:#000;
   transition: 0.2s ease-out 0.2s;
