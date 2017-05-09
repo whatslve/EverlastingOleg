@@ -1,55 +1,70 @@
+"use strict"
+//Главный объект игры с ее статусом
+var state = {
+    gameState: '.meny',
+    stage: 'begin',
+    idDialog: '1',
+    badBoy: '0',
+    trueBoy: '0',
+    menyName: '.meny-main'
+};
+//Проверка на наличие куки, если его нет то создать дефолтное
+var cookan = getCookie('gameStatus');
+if(cookan == undefined){
+  saveGame();
+};
+//Функция для смены окон
+var changeWindow = function(toWindowName){
+  deleteClass(g(state.gameState),'show');
+  addClass(g(toWindowName),'show');
+  addClass(g(state.gameState),'hidden');
+  deleteClass(g(toWindowName),'hidden');
+  state.gameState = toWindowName;
+};
+//Функция для смены меню
+var changeMeny = function(toMenyName){
+  deleteClass(g(state.menyName),'show');
+  addClass(g(toMenyName),'show');
+  addClass(g(state.menyName),'hidden');
+  deleteClass(g(toMenyName),'hidden');
+  state.menyName = toMenyName;
+};
 
-var language, links, contentEl, navEl, state, day, stage, karm, settings, authors,backMeny;
-language = 'ru';//Язык диалогов
-contentEl = document.querySelector('.dialog');//обработчик диалога
-navEl = document.querySelector('.meny');//обработчик меню
-play = document.querySelector('.startGame');//обработчик старта игры
-settings = document.querySelector('.settings');//обработчик найстройки игры
-authors = document.querySelector('.authors');//обработчик авторы игры
-backMeny = document.querySelectorAll('.back-meny');//обработчик кнопки назад в меню
-mainMeny = document.querySelector('.window-main-meny');
-state="meny";
-var saveGame = function(){
-  setCookie("state", state, null);
-};//сохранить текущий статус в куки
-var startMeny = function(){
+var dialogSystem = {
 
-}
+};
+
 var startGame = function(){
-  navEl.setAttribute("class", "meny hidden");
-  contentEl.setAttribute("class", "dialog show");
-  alert("игра типо началось но еще нихуя нету");
-};//начало игры
-var startSettings = function() {
-  state="settings";
-  document.querySelector(".window-"+state).setAttribute("class", "window-"+state+ " show");
-  mainMeny.setAttribute("class", "window-main-meny hidden");
+	loadGame();
+  changeWindow('.dialog');
+  function soundClick() {
+  var audio = new Audio(); // Создаём новый элемент Audio
+  audio.src = 'music/hui.mp3'; // Указываем путь к звуку "клика"
+  audio.autoplay = true; // Автоматически запускаем
+}
+  var hui = function(){
+    addHTML(g('.dialog-content'),'<h1 class="dialog-character">Голос в голове:</h1><div class="dialog-text"><p>Говно, залупа, пенис, хер, давалка, хуй, блядина, Головка, шлюха, жопа, член, еблан, петух, мудила, Рукоблуд, ссанина, очко, блядун, вагина, Сука, ебланище, влагалище, пердун, дрочила Пидор, пизда, туз, малафья, гомик, мудила, пилотка, манда, Анус, вагина, путана, педрила, шалава, хуила, мошонка, елда. ОНО МЕНЯЕТЦО!!!</p></div>')
+    console.log(g('.ptext'));
+   console.log('govno');
+   soundClick();
+  };
+  addListener(g('.next'),'click',hui);
+
+};
+
+var startSettings = function(){
+  changeMeny('.meny-settings');
 };
 
 var startAuthors = function(){
-  state="authors";
-  document.querySelector(".window-"+state).setAttribute("class", "window-"+state+ " show");
-  mainMeny.setAttribute("class", "window-main-meny hidden");
+  changeMeny('.meny-authors');
 };
-play.addEventListener('click', function(){
-  startGame();
-});//клик по ссылке начать игру
 
-settings.addEventListener('click', function(){
-  startSettings();
-});//клик по ссылке настройки
-
-authors.addEventListener('click', function(){
-  startAuthors();
-});//клик по ссылке Авторы
-
-var backMenyClick = function(){
-  var object;
-  mainMeny.setAttribute("class", "window-main-meny show");
-  document.querySelector(".window-"+state).setAttribute("class", "window-"+state.toLowerCase()+" hidden");
+var backInMeny = function(){
+  changeMeny('.meny-main');
 };
-for (i = 0; i < backMeny.length; ++i) {
-  backMeny[i].addEventListener('click',function(){
-    backMenyClick();
-  });
-};
+
+addListener(g('.start-game'),'click',startGame);
+addListener(g('.settings'),'click',startSettings);
+addListener(g('.authors'),'click',startAuthors);
+addListener(g('.back-meny'),'click',backInMeny);
