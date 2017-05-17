@@ -3,9 +3,9 @@
 var state = {
     gameState: '.meny',
     stage: 'begin',
-    idDialog: '1',
-    badBoy: '0',
-    trueBoy: '0',
+    idDialog: 0,
+    badBoy: 0,
+    trueBoy: 0,
     menyName: '.meny-main'
 };
 //Проверка на наличие куки, если его нет то создать дефолтное
@@ -29,27 +29,27 @@ var changeMeny = function(toMenyName){
   deleteClass(g(toMenyName),'hidden');
   state.menyName = toMenyName;
 };
-
+var array = ["Первый диалог","Второй диалог","Третий диалог"];
+var textView = function(){
+     addHTML(g('.dialog-content'),'<h1 class="dialog-character">'+array[state.idDialog]+'</h1><div class="dialog-text"><p>'+array[state.idDialog]+'</p></div>');
+}
 var dialogSystem = {
+  next: function () {
+    state.idDialog++;
+    textView();
+  },
+  back: function () {
+    state.idDialog--;
+    textView();
+  },
 
-};
-
+}
 var startGame = function(){
 	loadGame();
   changeWindow('.dialog');
-  function soundClick() {
-  var audio = new Audio(); // Создаём новый элемент Audio
-  audio.src = 'music/hui.mp3'; // Указываем путь к звуку "клика"
-  audio.autoplay = true; // Автоматически запускаем
-}
-  var hui = function(){
-    addHTML(g('.dialog-content'),'<h1 class="dialog-character">Голос в голове:</h1><div class="dialog-text"><p>Говно, залупа, пенис, хер, давалка, хуй, блядина, Головка, шлюха, жопа, член, еблан, петух, мудила, Рукоблуд, ссанина, очко, блядун, вагина, Сука, ебланище, влагалище, пердун, дрочила Пидор, пизда, туз, малафья, гомик, мудила, пилотка, манда, Анус, вагина, путана, педрила, шалава, хуила, мошонка, елда. ОНО МЕНЯЕТЦО!!!</p></div>')
-    console.log(g('.ptext'));
-   console.log('govno');
-   soundClick();
-  };
-  addListener(g('.next'),'click',hui);
-
+  textView();
+  addListener(g('.next'),'click',dialogSystem.next);
+  addListener(g('.back'),'click',dialogSystem.back);
 };
 
 var startSettings = function(){
